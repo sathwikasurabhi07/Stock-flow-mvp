@@ -64,10 +64,11 @@ def register(
 
         # Create user
         new_user = User(
-            email=user_data.email,
-            hashed_password=hashed_password,
-            organization_id=new_organization.id
-        )
+    name=user_data.organization_name,
+    email=user_data.email,
+    hashed_password=hashed_password,
+    organization_id=new_organization.id
+)
 
         db.add(new_user)
         db.flush()

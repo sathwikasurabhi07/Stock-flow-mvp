@@ -3,26 +3,17 @@ from sqlalchemy import (
     Integer,
     String,
     Text,
-    ForeignKey,
+    Float,
     DateTime,
-    Numeric,
-    UniqueConstraint,
-    func
+    ForeignKey
 )
+from sqlalchemy.sql import func
 
 from app.database.connection import Base
 
 
 class Product(Base):
     __tablename__ = "products"
-
-    __table_args__ = (
-        UniqueConstraint(
-            "organization_id",
-            "sku",
-            name="uq_product_org_sku"
-        ),
-    )
 
     id = Column(Integer, primary_key=True, index=True)
 
@@ -39,13 +30,15 @@ class Product(Base):
 
     description = Column(Text, nullable=True)
 
-    quantity = Column(Integer, nullable=False, default=0)
+    category = Column(String(100), nullable=True)
 
-    cost_price = Column(Numeric(10, 2), nullable=True)
-
-    selling_price = Column(Numeric(10, 2), nullable=True)
+    quantity = Column(Integer, default=0, nullable=False)
 
     low_stock_threshold = Column(Integer, nullable=True)
+
+    cost_price = Column(Float, nullable=True)
+
+    selling_price = Column(Float, nullable=True)
 
     created_at = Column(
         DateTime(timezone=True),
