@@ -1,6 +1,6 @@
 
 from fastapi import FastAPI
-
+from app.routes.products import router as products_router
 from app.routes.auth import router as auth_router
 
 
@@ -30,3 +30,4 @@ def health_check():
 
 # Authentication routes
 app.include_router(auth_router)
+app.include_router(products_router)
