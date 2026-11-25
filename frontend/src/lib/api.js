@@ -4,7 +4,7 @@ export const TOKEN_KEY = 'stockflow_token'
 export const EMAIL_KEY = 'stockflow_email'
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000',
+  baseURL: import.meta.env.VITE_API_URL || 'https://stock-flow-mvp.onrender.com',
   headers: { 'Content-Type': 'application/json' },
 })
 
